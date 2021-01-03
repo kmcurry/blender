@@ -149,6 +149,8 @@ typedef struct OVERLAY_ShadingData {
   /** Wireframe */
   float wire_step_param;
   float wire_opacity;
+  /** Armature */
+  float fade_depth_bias;
   /** Edit Curve */
   float edit_curve_normal_length;
   /** Edit Mesh */
@@ -216,37 +218,37 @@ typedef struct OVERLAY_ExtraCallBuffers {
   DRWShadingGroup *extra_loose_points;
 } OVERLAY_ExtraCallBuffers;
 
-typedef struct OVERLAY_ArmatureCallBuffers {
+typedef struct OVERLAY_ArmatureCallBuffersInner {
   DRWCallBuffer *box_outline;
-  DRWCallBuffer *box_solid;
-  DRWCallBuffer *box_transp;
+  DRWCallBuffer *box_fill;
 
   DRWCallBuffer *dof_lines;
   DRWCallBuffer *dof_sphere;
 
   DRWCallBuffer *envelope_distance;
   DRWCallBuffer *envelope_outline;
-  DRWCallBuffer *envelope_solid;
-  DRWCallBuffer *envelope_transp;
+  DRWCallBuffer *envelope_fill;
 
   DRWCallBuffer *octa_outline;
-  DRWCallBuffer *octa_solid;
-  DRWCallBuffer *octa_transp;
+  DRWCallBuffer *octa_fill;
 
   DRWCallBuffer *point_outline;
-  DRWCallBuffer *point_solid;
-  DRWCallBuffer *point_transp;
+  DRWCallBuffer *point_fill;
 
   DRWCallBuffer *stick;
 
   DRWCallBuffer *wire;
 
   DRWShadingGroup *custom_outline;
-  DRWShadingGroup *custom_solid;
-  DRWShadingGroup *custom_transp;
+  DRWShadingGroup *custom_fill;
   DRWShadingGroup *custom_wire;
-  GHash *custom_shapes_transp_ghash;
+
   GHash *custom_shapes_ghash;
+} OVERLAY_ArmatureCallBuffersInner;
+
+typedef struct OVERLAY_ArmatureCallBuffers {
+  OVERLAY_ArmatureCallBuffersInner solid;
+  OVERLAY_ArmatureCallBuffersInner transp;
 } OVERLAY_ArmatureCallBuffers;
 
 typedef struct OVERLAY_PrivateData {
@@ -409,6 +411,7 @@ typedef struct OVERLAY_PrivateData {
     bool show_relations;
     bool do_pose_xray;
     bool do_pose_fade_geom;
+    bool do_wire_depth_fade;
   } armature;
   struct {
     bool in_front;
