@@ -478,6 +478,7 @@ shader_node_categories = [
     ]),
     ShaderNodeCategory("SH_NEW_SCRIPT", "Script", items=[
         NodeItem("ShaderNodeScript"),
+        NodeItem("ShaderNodeKevinNode"),
     ]),
     ShaderNodeCategory("SH_NEW_GROUP", "Group", items=node_group_items),
     ShaderNodeCategory("SH_NEW_LAYOUT", "Layout", items=[

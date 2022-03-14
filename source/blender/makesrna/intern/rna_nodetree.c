@@ -6651,6 +6651,30 @@ static void def_sh_script(StructRNA *srna)
 #  endif
 }
 
+static void def_sh_kevin_node(StructRNA *srna)
+{
+  PropertyRNA *prop;
+
+  RNA_def_struct_sdna_from(srna, "KevinNodeData", "storage");
+
+  prop = RNA_def_property(srna, "custom_data1", PROP_INT, PROP_NONE);
+  RNA_def_property_int_sdna(prop, NULL, "custom_data1");
+  RNA_def_property_int_default(prop, 2048);
+  RNA_def_property_range(prop, 0, 8192);
+  RNA_def_property_ui_text(prop, "custom_data1_text", "Text for custom data 1");
+  RNA_def_property_update(prop, NC_NODE | NA_EDITED, "rna_Node_update");
+
+  prop = RNA_def_property(srna, "custom_data2", PROP_INT, PROP_NONE);
+  RNA_def_property_int_sdna(prop, NULL, "custom_data2");
+  RNA_def_property_int_default(prop, 2048);
+  RNA_def_property_range(prop, 0, 8192);
+  RNA_def_property_ui_text(prop, "custom_data2_text", "Text for custom data 2");
+  RNA_def_property_update(prop, NC_NODE | NA_EDITED, "rna_Node_update");
+
+  // When is this required?
+  // RNA_def_struct_sdna_from(srna, "bNode", NULL);
+}
+
 /* -- Compositor Nodes ------------------------------------------------------ */
 
 static void def_cmp_alpha_over(StructRNA *srna)
