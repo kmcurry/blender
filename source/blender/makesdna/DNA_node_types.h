@@ -1652,6 +1652,11 @@ typedef struct NodeFunctionCompare {
   char _pad[1];
 } NodeFunctionCompare;
 
+typedef struct KevinNodeData {
+  int custom_data1;
+  int custom_data2;
+} KevinNodeData;
+
 /* script node mode */
 #define NODE_SCRIPT_INTERNAL 0
 #define NODE_SCRIPT_EXTERNAL 1
