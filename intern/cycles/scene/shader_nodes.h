@@ -1064,6 +1064,14 @@ class AddClosureNode : public ShaderNode {
   void constant_fold(const ConstantFolder &folder);
 };
 
+class KevinNode : public ShaderNode {
+ public:
+  SHADER_NODE_CLASS(KevinNode)
+  void constant_fold(const ConstantFolder &folder);
+  NODE_SOCKET_API(int, input1)
+  NODE_SOCKET_API(int, input2)
+};
+
 class MixClosureNode : public ShaderNode {
  public:
   SHADER_NODE_CLASS(MixClosureNode)

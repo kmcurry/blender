@@ -4788,6 +4788,47 @@ void AddClosureNode::constant_fold(const ConstantFolder &folder)
   }
 }
 
+/* Kevin Node */
+
+NODE_DEFINE(KevinNode)
+{
+  NodeType *type = NodeType::add("kevin", create, NodeType::SHADER);
+
+  SOCKET_IN_INT(input1, "Input1", 1);
+  SOCKET_IN_INT(input2, "Input2", 0);
+
+  SOCKET_OUT_CLOSURE(closure, "Output1");
+
+  return type;
+}
+
+KevinNode::KevinNode() : ShaderNode(get_node_type())
+{
+}
+
+void KevinNode::constant_fold(const ConstantFolder &folder)
+{
+}
+
+void KevinNode::compile(SVMCompiler &)
+{
+  ShaderInput *in1 = input("Input1");
+  ShaderInput *in2 = input("Input2");
+
+  Node *node1 = in1->parent;
+  auto val = node1->get_int(in1->socket_type);
+
+  Node *node2 = in2->parent;
+  auto val = node2->get_int(in2->socket_type);
+}
+
+void KevinNode::compile(OSLCompiler &compiler)
+{
+  ShaderInput *in1 = input("Input1");
+  ShaderInput *in2 = input("Input2");
+  auto thing = 1;
+}
+
 /* Mix Closure */
 
 NODE_DEFINE(MixClosureNode)
