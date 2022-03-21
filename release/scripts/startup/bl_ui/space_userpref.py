@@ -2276,6 +2276,7 @@ class USERPREF_PT_experimental_prototypes(ExperimentalPanel, Panel):
                 ({"property": "use_new_curves_type"}, "T68981"),
                 ({"property": "use_new_point_cloud_type"}, "T75717"),
                 ({"property": "use_full_frame_compositor"}, "T88150"),
+                ({"property": "enable_eevee_next"}, "T93220"),
             ),
         )
 
@@ -2295,7 +2296,6 @@ class USERPREF_PT_experimental_debugging(ExperimentalPanel, Panel):
                 ({"property": "use_undo_legacy"}, "T60695"),
                 ({"property": "override_auto_resync"}, "T83811"),
                 ({"property": "use_cycles_debug"}, None),
-                ({"property": "use_geometry_nodes_legacy"}, "T91274"),
                 ({"property": "show_asset_debug_info"}, None),
                 ({"property": "use_asset_indexing"}, None),
             ),
